@@ -58,7 +58,7 @@ Para ejecutar el siguiente comando es necesario tener instalado aptly. Para ello
 https://www.aptly.info/download/
 ```
 
-Selección de los paquetes que se instalaran y luego procedemos a actualizar el mirror:
+Selección de los paquetes que se instalaran (postgresql) y luego procedemos a actualizar el mirror:
 
 ```
 aptly mirror create -architectures=amd64 -filter='Priority (required) | Priority (important) | Priority (standard) | postgresql' -filter-with-deps xenial-main-postgresql http://mirror.upb.edu.co/ubuntu/ xenial main
@@ -71,11 +71,24 @@ aptly mirror update xenial-main-postgresql
 Creamos un snaphost y luego lo publicamos e ingresamos una passphrase:
 
 ```
-aptly snapshot create xenial-snapshot-postgresql from mirror xenial-main
+aptly snapshot create xenial-snapshot-postgresql from mirror xenial-main-postgresql
 ```
 
 ```
 aptly publish snapshot xenial-snapshot-postgresql
+```
+
+Luego exportamos la llave:
+
+```
+gpg --export --armor > my_key.pub
+```
+
+La copiamos por fuera del equipo mirror desde el equipo anfitrión
+
+```
+scp vagrant@ip_solo_anfitrion:/tmp/my_key.pub .
+
 ```
 
 
