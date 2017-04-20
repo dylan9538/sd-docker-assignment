@@ -4,9 +4,8 @@
 **Curso:** Sistemas Distribuidos  
 
 ****
-Estudiante | Código
---- | --- | ---
-Dylan Torres | A00265772
+Estudiante: Dylan Torres
+Código: A00265772
 ****
 
 #PASOS DE CREACIÓN Y DESPLIEGUE DEL MIRROR
